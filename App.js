@@ -1,68 +1,47 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { createDrawerNavigator, createTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
-import { Login } from './app/views/Login';
+import {Login} from './app/views/Login';
 import { Home } from './app/views/Home';
 import { Contacts } from './app/views/Contacts';
-import { History } from './app/views/History'
+import { History } from './app/views/History';
+import { createDrawerNavigator, createSwitchNavigator, createAppContainer, createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 
-const AppNav = createStackNavigator(
-  {
-    Login: {
-      screen: Login,
-      navigationOptions: {
-        header: null
-      }
-    },
-    Home: {
-      screen: Home,
-      navigationOptions: {
-        header: null
-      }
-    },
-  },
-  {
-    initialRouteName: 'Login'
-  },
-  
-);
-
-// const HomeNav = createTabNavigator(
-//   {
-//     Contacts: {
-//       screen: Contacts
-//     },
-//     Directory: {
-//       screen: History
-//     }
-//   },
-//   {
-//     initialRouteName: 'Contacts'
-//   }
-// );
-
-// const ProfileNav = createDrawerNavigator(
-//   {
-//     Settings: {
-//       screen: Settings
-//     }
-//   }
-// );
-
-const AppContainer = createAppContainer(AppNav);
-
-export default class App extends Component {
+class App extends Component {
   render() {
-    
     return (
-        <AppContainer navigate = {this.props.navigation}/>
-        // <Home />
+        <AppContainer />
     );
   }
 };
 
+export default App;
+
+const HomeTabNavigator = createBottomTabNavigator({
+  Contacts,
+  History
+});
+
+const HomeStackNavigator = createStackNavigator({
+  HomeTabNavigator: HomeTabNavigator
+});
+
+const AppDrawerNavigator = createDrawerNavigator({
+  Home: {
+    screen: HomeStackNavigator
+  }
+});
+
+const AppSwitchNavigator = createSwitchNavigator({
+  Login: {screen: Login},
+  Home: {screen: AppDrawerNavigator}
+});
+
+const AppContainer = createAppContainer(AppSwitchNavigator);
+
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-  },
-});
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+})
