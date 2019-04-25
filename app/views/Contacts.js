@@ -11,7 +11,7 @@ export class Contacts extends Component {
     }
 
     getName(item){
-        console.log(item.name, "-", item.subtitle);
+        console.log(item.name, "-", item.subtitle, "phone: ", item.number);
     }
 
     render() {
@@ -31,54 +31,67 @@ export class Contacts extends Component {
 const contactList = [
     {
         name: 'John Smith',
-        subtitle: 'Director'
+        subtitle: 'Director',
+        number: '07789521321'
     },
     {
         name: 'Ali Jones',
-        subtitle: 'Director'
+        subtitle: 'Director',
+        number: '03298432654'
     },
     {
         name: 'Jane Goodall',
-        subtitle: 'Director'
+        subtitle: 'Director',
+        number: '07735789146'
     },
     {
         name: 'Samir Sam',
-        subtitle: 'Admin'
+        subtitle: 'Admin',
+        number: '01297432164'
     },
     {
         name: 'Jessica Jones',
-        subtitle: 'Admin'
+        subtitle: 'Admin',
+        number: '08341987423'
     },
     {
         name: 'Luke Cage',
-        subtitle: 'Operations'
+        subtitle: 'Operations',
+        number: '02393487333'
     },
     {
         name: 'Bob Bobson',
-        subtitle: 'Operations'
+        subtitle: 'Operations',
+        number: '09821564327'
     },
     {
         name: 'Chris Christophersen',
-        subtitle: 'Sales'
+        subtitle: 'Sales',
+        number: '08853241543'
     },
     {
         name: 'Ellie Ellison',
-        subtitle: 'Sales'
+        subtitle: 'Sales',
+        number: '06782364590'
     },
     {
-        name: 'Ellie Ellison',
-        subtitle: 'Sales'
+        name: 'Jen Johnson',
+        subtitle: 'Sales',
+        number: '07771865421'
     },
     {
-        name: 'Ellie Ellison',
-        subtitle: 'Sales'
+        name: 'Olaf Olafssen',
+        subtitle: 'Sales',
+        number: '07654123456'
     },
     {
-        name: 'Ellie Ellison',
-        subtitle: 'Sales'
+        name: 'Billy Bobson',
+        subtitle: 'Sales',
+        number: '07652444999'
     },
     {
-        name: 'Ellie Ellison',
-        subtitle: 'Sales'
+        name: 'Dom Donner',
+        subtitle: 'Sales',
+        number: '03336487632'
     },
 ]

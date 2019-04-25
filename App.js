@@ -19,8 +19,22 @@ class App extends Component {
 export default App;
 
 const HomeTabNavigator = createBottomTabNavigator({
-  Contacts,
-  History
+  Contacts: {
+    screen: Contacts,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="users" size={20} color="#fff" />
+      )
+    }
+  },
+  History: {
+    screen: History,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="history" size={20} color="#fff" />
+      )
+    }
+  }
 }, {
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index]
