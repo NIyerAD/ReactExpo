@@ -1,16 +1,17 @@
-import React, {Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import {Login} from './app/views/Login';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { Login } from './app/views/Login';
 import { Home } from './app/views/Home';
 import { Contacts } from './app/views/Contacts';
 import { History } from './app/views/History';
 import { createDrawerNavigator, createSwitchNavigator, createAppContainer, createBottomTabNavigator, createStackNavigator } from 'react-navigation';
+import { Header, Left, Right, Body, Container, Button, Content, Footer, FooterTab, Title, List, ListItem } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 class App extends Component {
   render() {
     return (
-        <AppContainer />
+      <AppContainer />
     );
   }
 };
@@ -21,46 +22,71 @@ const HomeTabNavigator = createBottomTabNavigator({
   Contacts,
   History
 }, {
-  navigationOptions:({navigation}) => {
-    const {routeName} = navigation.state.routes[navigation.state.index]
-    return {
-      headerTitle: routeName,
+    navigationOptions: ({ navigation }) => {
+      const { routeName } = navigation.state.routes[navigation.state.index]
+      return {
+        headerTitle: routeName,
+      }
+    },
+    tabBarOptions: {
+      style: {
+        backgroundColor: '#2D3547'
+      }
     }
-  },
-  tabBarOptions: {
-    style: {
-      backgroundColor: '#2D3547'
-    }
-  }
-});
+  });
 
 const HomeStackNavigator = createStackNavigator({
   HomeTabNavigator: HomeTabNavigator
 }, {
-  defaultNavigationOptions: ({navigation}) => {
-    return {
-      headerTitleStyle: {
-        color: '#fff'
-      },
-      headerStyle: {
-        backgroundColor: '#2D3547'
-      },
-      headerRight: (
-        <Icon name="user" style={{fontSize: 25, paddingRight: 10, color: '#fff'}} onPress={() => navigation.openDrawer()} />
-      )
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        headerTitleStyle: {
+          color: '#fff'
+        },
+        headerStyle: {
+          backgroundColor: '#2D3547'
+        },
+        headerRight: (
+          <Icon name="user" style={{ fontSize: 25, paddingRight: 10, color: '#fff' }} onPress={() => navigation.openDrawer()} />
+        )
+      }
     }
-  }
-});
+  });
 
-const AppDrawerNavigator = createDrawerNavigator({
-  Home: {
-    screen: HomeStackNavigator
-  }
-});
+const AppDrawerNavigator = createDrawerNavigator(
+  {
+    Home: {
+      screen: HomeStackNavigator
+    }
+  },
+  {
+    contentComponent: props =>
+      <Container>
+        <Header>
+          <Body>
+            <Title>Profile</Title>
+          </Body>
+        </Header>
+        <Content>
+          <List>
+            <ListItem>
+                <Text>Settings</Text>
+            </ListItem>
+            <ListItem>
+                <Text>Logout</Text>
+            </ListItem>
+          </List>
+        </Content>
+      </Container>
+  },
+  {
+    drawerPosition: "right",
+    drawerWidth: 180
+  });
 
 const AppSwitchNavigator = createSwitchNavigator({
-  Login: {screen: Login},
-  Home: {screen: AppDrawerNavigator},
+  Login: { screen: Login },
+  Home: { screen: AppDrawerNavigator },
   // Settings: {screen}
 });
 
