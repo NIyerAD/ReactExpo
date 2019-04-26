@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import { SearchBar } from 'react-native-elements';
 
-export class Contacts extends Component {
+export class Directory extends Component {
     constructor(props) {
         super(props);
 
@@ -18,7 +18,7 @@ export class Contacts extends Component {
         return (
             <ScrollView>
                 {
-                    contactList.map((item, index) => (
+                    directory.map((item, index) => (
                         <ListItem key={index} title={item.name} subtitle={item.subtitle}
                         containerStyle={{borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => this.getName(item)} chevron/>
                     ))
@@ -28,7 +28,7 @@ export class Contacts extends Component {
     }
 }
 
-const contactList = [
+const directory = [
     {
         name: 'John Smith',
         subtitle: 'Director',

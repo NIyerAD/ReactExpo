@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Login } from './app/views/Login';
 import { Home } from './app/views/Home';
-import { Contacts } from './app/views/Contacts';
+import { Directory } from './app/views/Directory';
 import { History } from './app/views/History';
-import { createDrawerNavigator, createSwitchNavigator, createAppContainer, createBottomTabNavigator, createStackNavigator } from 'react-navigation';
+import { Settings } from './app/views/Profile/Settings';
+import { createDrawerNavigator, createSwitchNavigator, createAppContainer, createBottomTabNavigator, createStackNavigator, DrawerItems } from 'react-navigation';
 import { Header, Left, Right, Body, Container, Button, Content, Footer, FooterTab, Title, List, ListItem } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -18,12 +19,13 @@ class App extends Component {
 
 export default App;
 
+// Tab navigator
 const HomeTabNavigator = createBottomTabNavigator({
-  Contacts: {
-    screen: Contacts,
+  Directory: {
+    screen: Directory,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
-        <Icon name="users" size={20} color="#fff" />
+        <Icon name="address-book" size={20} color="#fff" />
       )
     }
   },
@@ -44,15 +46,22 @@ const HomeTabNavigator = createBottomTabNavigator({
     },
     tabBarOptions: {
       style: {
-        backgroundColor: '#2D3547'
-      }
+        backgroundColor: '#2D3547',
+      },
+      inactiveTintColor: '#fff',
     }
-  });
+});
 
+// Navigator that contains top bar
 const HomeStackNavigator = createStackNavigator({
-  HomeTabNavigator: HomeTabNavigator
+  HomeTabNavigator: HomeTabNavigator,
+  Settings: {screen: Settings}
 }, {
+    navigationOptions: {
+      drawerLabel: () => null
+    },
     defaultNavigationOptions: ({ navigation }) => {
+      
       return {
         headerTitleStyle: {
           color: '#fff'
@@ -70,7 +79,11 @@ const HomeStackNavigator = createStackNavigator({
 const AppDrawerNavigator = createDrawerNavigator(
   {
     Home: {
-      screen: HomeStackNavigator
+      screen: HomeStackNavigator,
+      
+    },
+    Settings: {
+      screen: Settings
     }
   },
   {
@@ -82,14 +95,7 @@ const AppDrawerNavigator = createDrawerNavigator(
           </Body>
         </Header>
         <Content>
-          <List>
-            <ListItem>
-                <Text>Settings</Text>
-            </ListItem>
-            <ListItem>
-                <Text>Logout</Text>
-            </ListItem>
-          </List>
+          <DrawerItems {...props} />
         </Content>
       </Container>
   },

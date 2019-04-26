@@ -4,7 +4,7 @@ import { TabNavigator } from "react-navigation";
 import { Header, Left, Right, Body, Container, Button, Content, Footer, FooterTab, Title } from 'native-base';
 // import { Header } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Contacts } from './Contacts';
+import { Directory } from './Directory';
 
 export class Home extends Component {
     constructor(props) {
