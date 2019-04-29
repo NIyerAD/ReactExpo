@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
-import { SearchBar } from 'react-native-elements';
+import { Container, Header, Item, Input } from 'native-base';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class Directory extends Component {
     constructor(props) {
@@ -10,27 +11,35 @@ export class Directory extends Component {
         this.getName = this.getName.bind(this);
     }
 
-    getName(item){
+    getName(item) {
         console.log(item.name, "-", item.subtitle, "phone: ", item.number);
     }
 
     render() {
         return (
-            <ScrollView>
-                {
-                    // directory.map((item, index) => (
-                    //     <ListItem key={index} title={item.name} subtitle={item.subtitle}
-                    //     containerStyle={{borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => this.getName(item)} chevron/>
-                    // ))
-                    directory.map((item, index) => (
-                        <ListItem key={index} title={item.name} subtitle={item.subtitle}
-                        containerStyle={{borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => this.props.navigation.navigate('Contact', {
-                            name: item.name,
-                            number: item.number
-                        })}  chevron/>
-                    ))
-                }
-            </ScrollView>
+            <Container>
+                <Header searchBar rounded>
+                    <Item style={{marginBottom: 10}}>
+                        <Icon name="search" style={{paddingLeft: 5}}/>
+                        <Input placeholder="Search" />
+                    </Item>
+                </Header>
+                <ScrollView>
+                    {
+                        // directory.map((item, index) => (
+                        //     <ListItem key={index} title={item.name} subtitle={item.subtitle}
+                        //     containerStyle={{borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => this.getName(item)} chevron/>
+                        // ))
+                        directory.map((item, index) => (
+                            <ListItem key={index} title={item.name} subtitle={item.subtitle}
+                                containerStyle={{ borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => this.props.navigation.navigate('Contact', {
+                                    name: item.name,
+                                    number: item.number
+                                })} chevron />
+                        ))
+                    }
+                </ScrollView>
+            </Container>
         )
     }
 }

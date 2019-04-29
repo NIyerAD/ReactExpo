@@ -1,31 +1,41 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
 import { ListItem } from 'react-native-elements';
+import { Container, Header, Item, Input } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class History extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.getNumber = this.getNumber.bind(this);
     }
 
-    getNumber(item){
+    getNumber(item) {
         console.log(item.outbound);
     }
 
-    render(){
-        return(
-            <ScrollView>
-                {
-                    historyEntries.map((item, index) => (
-                        <ListItem key={index} title={item.outbound} 
-                        containerStyle={{borderWidth: 0.5, borderStyle: 'solid' }} 
-                        onPress={() => this.getNumber(item)} 
-                        leftIcon={<Icon name="phone" style={{color: item.colour, fontSize: 20}} />}/>
-                    ))
-                }
-            </ScrollView>
+    render() {
+        return (
+            <Container>
+                <Header searchBar rounded>
+                    <Item style={{marginBottom: 10}}>
+                        <Icon name="search" style={{paddingLeft: 5}}/>
+                        <Input placeholder="Search" />
+                    </Item>
+                </Header>
+                <ScrollView>
+                    {
+                        historyEntries.map((item, index) => (
+                            <ListItem key={index} title={item.outbound}
+                                containerStyle={{ borderWidth: 0.5, borderStyle: 'solid' }}
+                                onPress={() => this.getNumber(item)}
+                                leftIcon={<Icon name="phone" style={{ color: item.colour, fontSize: 20 }} />} />
+                        ))
+                    }
+                </ScrollView>
+            </Container>
+
         )
     }
 }
