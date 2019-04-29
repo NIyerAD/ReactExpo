@@ -18,9 +18,16 @@ export class Directory extends Component {
         return (
             <ScrollView>
                 {
+                    // directory.map((item, index) => (
+                    //     <ListItem key={index} title={item.name} subtitle={item.subtitle}
+                    //     containerStyle={{borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => this.getName(item)} chevron/>
+                    // ))
                     directory.map((item, index) => (
                         <ListItem key={index} title={item.name} subtitle={item.subtitle}
-                        containerStyle={{borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => this.getName(item)} chevron/>
+                        containerStyle={{borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => this.props.navigation.navigate('Contact', {
+                            name: item.name,
+                            number: item.number
+                        })}  chevron/>
                     ))
                 }
             </ScrollView>

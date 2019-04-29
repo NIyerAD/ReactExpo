@@ -8,6 +8,7 @@ import { Settings } from './app/views/Profile/Settings';
 import { createDrawerNavigator, createSwitchNavigator, createAppContainer, createBottomTabNavigator, createStackNavigator, DrawerItems } from 'react-navigation';
 import { Header, Left, Right, Body, Container, Button, Content, Footer, FooterTab, Title, List, ListItem } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Contact } from './app/views/Contact';
 
 class App extends Component {
   render() {
@@ -55,9 +56,11 @@ const HomeTabNavigator = createBottomTabNavigator({
 // Navigator that contains top bar
 const HomeStackNavigator = createStackNavigator({
   HomeTabNavigator: HomeTabNavigator,
-  Settings: {screen: Settings}
+  Settings: {screen: Settings},
+  Contact: {screen: Contact}
 }, {
     navigationOptions: {
+      // Hide 'Home' route from drawer nav
       drawerLabel: () => null
     },
     defaultNavigationOptions: ({ navigation }) => {
