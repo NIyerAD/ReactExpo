@@ -17,6 +17,7 @@ export class History extends Component {
 
     render() {
         return (
+
             <Container>
                 <Header searchBar rounded>
                     <Item style={{marginBottom: 10}}>

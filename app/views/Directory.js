@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
-import { List, ListItem } from 'react-native-elements';
+import { ListItem } from 'react-native-elements';
 import { Container, Header, Item, Input } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -26,10 +26,6 @@ export class Directory extends Component {
                 </Header>
                 <ScrollView>
                     {
-                        // directory.map((item, index) => (
-                        //     <ListItem key={index} title={item.name} subtitle={item.subtitle}
-                        //     containerStyle={{borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => this.getName(item)} chevron/>
-                        // ))
                         directory.map((item, index) => (
                             <ListItem key={index} title={item.name} subtitle={item.subtitle}
                                 containerStyle={{ borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => this.props.navigation.navigate('Contact', {
