@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { Login } from './app/views/Login';
 import { Home } from './app/views/Home';
 import { Directory } from './app/views/Directory';
@@ -8,7 +8,7 @@ import { Keypad } from './app/views/Keypad';
 import { Chat } from './app/views/Chat';
 import { Settings } from './app/views/Profile/Settings';
 import { createDrawerNavigator, createSwitchNavigator, createAppContainer, createBottomTabNavigator, createStackNavigator, DrawerItems } from 'react-navigation';
-import { Header, Left, Right, Body, Container, Button, Content, Footer, FooterTab, Title, List, ListItem } from 'native-base';
+import { Header, Body, Container, Content, Title } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Contact } from './app/views/Contact';
 
@@ -117,6 +117,7 @@ const AppDrawerNavigator = createDrawerNavigator(
         </Header>
         <Content>
           <DrawerItems {...props} />
+          <Text>Logout</Text>
         </Content>
       </Container>
   },

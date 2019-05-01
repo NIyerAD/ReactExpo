@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, KeyboardAvoidingView, Text } from 'react-native';
-import { Input, Button } from 'react-native-elements';
+import { Input, Button, FormInput } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RNPickerSelect from 'react-native-picker-select';
 
@@ -11,12 +11,15 @@ export class Login extends Component {
 
         this.state = {
             host: [],
-            isLoggedIn: false
+            isLoggedIn: false,
+            username: null,
+            password: null
         };
 
         this.updateHost = this.updateHost.bind(this);
         this.handleUsername = this.handleUsername.bind(this);
         this.handleHostChange = this.handleHostChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
 
         
     }
@@ -25,16 +28,21 @@ export class Login extends Component {
         this.setState({ host: host })
     }
 
-    handleUsername = (event) => {
-        console.log("Username: ", event.target.value);
+    handleUsername = (username) => {
+        this.setState({username});
     }
 
-    handlePassword = (event) => {
-        console.log("Password: ", event.target.value)
+    handlePassword = (password) => {
+        this.setState({password});
     }
 
     handleHostChange = (event) => {
         console.log("host selected");
+    }
+
+    handleSubmit = (props) => {
+        console.log(this.state.username, " / ", this.state.password);
+        this.props.navigation.navigate('Home');
     }
 
     render() {
@@ -76,6 +84,7 @@ export class Login extends Component {
                         inputContainerStyle={{ borderRadius: 30, marginTop: 20 }}
                         placeholder='Username'
                         onChangeText={this.handleUsername}
+                        value={this.state.username}
                         leftIcon={
                             <Icon
                                 name='user'
@@ -91,7 +100,6 @@ export class Login extends Component {
                         onChangeText={this.handlePassword}
                         placeholderTextColor={"white"}
                         inputContainerStyle={{ borderRadius: 30, marginTop: 20 }}
-                        inputTy
                         leftIcon={
                             <Icon
                                 name='lock'
@@ -100,7 +108,7 @@ export class Login extends Component {
                             />
                         }
                     />
-                    <Button title="Login" buttonStyle={styles.loginButton} onPress={() => this.props.navigation.navigate('Home')}/>
+                    <Button title="Login" buttonStyle={styles.loginButton} onPress={() => this.handleSubmit()}/>
                 </View>
             </KeyboardAvoidingView>
         )
