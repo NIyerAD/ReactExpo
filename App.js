@@ -4,6 +4,8 @@ import { Login } from './app/views/Login';
 import { Home } from './app/views/Home';
 import { Directory } from './app/views/Directory';
 import { History } from './app/views/History';
+import { Keypad } from './app/views/Keypad';
+import { Chat } from './app/views/Chat';
 import { Settings } from './app/views/Profile/Settings';
 import { createDrawerNavigator, createSwitchNavigator, createAppContainer, createBottomTabNavigator, createStackNavigator, DrawerItems } from 'react-navigation';
 import { Header, Left, Right, Body, Container, Button, Content, Footer, FooterTab, Title, List, ListItem } from 'native-base';
@@ -35,6 +37,22 @@ const HomeTabNavigator = createBottomTabNavigator({
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Icon name="history" size={20} color="#fff" />
+      )
+    }
+  },
+  Chat: {
+    screen: Chat,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="comments" size={20} color="#fff"/>
+      )
+    }
+  },
+  Keypad: {
+    screen: Keypad,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => (
+        <Icon name="th" size={20} color="#fff" />
       )
     }
   }

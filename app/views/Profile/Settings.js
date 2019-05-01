@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native-elements';
+import { Text } from 'react-native-elements';
 import { Container } from 'native-base';
 
 export class Settings extends Component {

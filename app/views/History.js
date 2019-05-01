@@ -22,7 +22,7 @@ export class History extends Component {
                 <Header searchBar rounded>
                     <Item style={{marginBottom: 10}}>
                         <Icon name="search" style={{paddingLeft: 5}}/>
-                        <Input placeholder="Search" />
+                        <Input placeholder="Search" keyboardType={"phone-pad"} />
                     </Item>
                 </Header>
                 <ScrollView>

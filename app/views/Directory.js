@@ -19,8 +19,8 @@ export class Directory extends Component {
         return (
             <Container>
                 <Header searchBar rounded>
-                    <Item style={{marginBottom: 10}}>
-                        <Icon name="search" style={{paddingLeft: 5}}/>
+                    <Item style={{ marginBottom: 10 }}>
+                        <Icon name="search" style={{ paddingLeft: 5 }} />
                         <Input placeholder="Search" />
                     </Item>
                 </Header>
@@ -29,6 +29,7 @@ export class Directory extends Component {
                         directory.map((item, index) => (
                             <ListItem key={index} title={item.name} subtitle={item.subtitle}
                                 containerStyle={{ borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => this.props.navigation.navigate('Contact', {
+                                    // Passes props to child component
                                     name: item.name,
                                     number: item.number
                                 })} chevron />

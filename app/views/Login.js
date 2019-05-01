@@ -61,7 +61,7 @@ export class Login extends Component {
         return (
             <KeyboardAvoidingView style={styles.loginContainer} behavior="padding">
                 <View style={styles.logoContainer}>
-                    <Image source={logo} style={styles.companyLogo} />
+                    <Image source={logo} style={styles.companyLogo} resizeMode="contain"/>
                 </View>
                 <View style={{ flex: 2 }}>
                     <View style={styles.pickerContainer}>
@@ -111,10 +111,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 80
     },
-    companyLogo: {
-        width: 250,
-        height: 70
-    },
+    // companyLogo: {
+    //     width: 250,
+    //     height: 70
+    // },
     loginContainer: {
         backgroundColor: '#2D3547',
         height: '100%'
