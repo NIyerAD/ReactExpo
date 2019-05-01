@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, Image, KeyboardAvoidingView, Text } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RNPickerSelect from 'react-native-picker-select';
@@ -60,8 +60,11 @@ export class Login extends Component {
 
         return (
             <KeyboardAvoidingView style={styles.loginContainer} behavior="padding">
-                <View style={styles.logoContainer}>
+                {/* <View style={styles.logoContainer}>
                     <Image source={logo} style={styles.companyLogo} resizeMode="contain"/>
+                </View> */}
+                <View style={styles.logoContainer}>
+                    <Text style={{color: '#fff', fontSize: 60}}>Test App</Text>
                 </View>
                 <View style={{ flex: 2 }}>
                     <View style={styles.pickerContainer}>
