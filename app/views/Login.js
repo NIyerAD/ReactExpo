@@ -13,7 +13,7 @@ export class Login extends Component {
             host: [],
             isLoggedIn: false,
             username: null,
-            password: null
+            password: null, 
         };
 
         this.updateHost = this.updateHost.bind(this);
@@ -36,33 +36,26 @@ export class Login extends Component {
         this.setState({password});
     }
 
-    handleHostChange = (event) => {
+    handleHostChange = () => {
         console.log("host selected");
     }
 
-    handleSubmit = (props) => {
-        console.log("Username: ", this.state.username, "/ Password: ", this.state.password);
-        if((this.state.username !== "naren.iyer") && (this.state.password !== "test")){
-            Alert.alert("Access Denied", "Incorrect username or password");
-        }
-        else {
-            this.props.navigation.navigate('Home');
-        }
+    handleSubmit = () => {
+        this.props.navigation.navigate('Home');
     }
 
     render() {
-        let logo = require('../../assets/logo.png');
         const placeholder = {
             label: 'Select a host',
             value: null,
         }
         const hostnames = [
             {
-                label: 'https://demo.aerial-direct.co.uk',
+                label: 'https://demo.test.co.uk',
                 value: 'Demo'
             },
             {
-                label: 'https://pabx.aerial-direct.co.uk',
+                label: 'https://pabx.test.co.uk',
                 value: 'Live'
             }
         ]
@@ -71,9 +64,6 @@ export class Login extends Component {
 
         return (
             <KeyboardAvoidingView style={styles.loginContainer} behavior="padding">
-                {/* <View style={styles.logoContainer}>
-                    <Image source={logo} style={styles.companyLogo} resizeMode="contain"/>
-                </View> */}
                 <View style={styles.logoContainer}>
                     <Text style={{color: '#fff', fontSize: 60}}>Test App</Text>
                 </View>
