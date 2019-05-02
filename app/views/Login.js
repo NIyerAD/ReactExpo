@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, KeyboardAvoidingView, Text } from 'react-native';
+import { Alert, StyleSheet, View, Image, KeyboardAvoidingView, Text } from 'react-native';
 import { Input, Button, FormInput } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RNPickerSelect from 'react-native-picker-select';
@@ -41,14 +41,17 @@ export class Login extends Component {
     }
 
     handleSubmit = (props) => {
-        console.log(this.state.username, " / ", this.state.password);
-        this.props.navigation.navigate('Home');
+        console.log("Username: ", this.state.username, "/ Password: ", this.state.password);
+        if((this.state.username !== "naren.iyer") && (this.state.password !== "test")){
+            Alert.alert("Access Denied", "Incorrect username or password");
+        }
+        else {
+            this.props.navigation.navigate('Home');
+        }
     }
 
     render() {
         let logo = require('../../assets/logo.png');
-        // const username; 
-        // const password;
         const placeholder = {
             label: 'Select a host',
             value: null,
