@@ -11,6 +11,7 @@ import { createDrawerNavigator, createSwitchNavigator, createAppContainer, creat
 import { Header, Body, Container, Content, Title } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Contact } from './app/views/Contact';
+import { ContactChat } from './app/views/ContactChat';
 
 class App extends Component {
   
@@ -34,7 +35,7 @@ class App extends Component {
   
   handleConnectivityCheck = () => {
     NetInfo.getConnectionInfo().then((connectionInfo) => {
-      connectionInfo.type === 'none' ? console.log('Connection Error') : ''
+      connectionInfo.type === 'none' ? Alert.alert('Connection Error') : ''
     });
   }
 
@@ -100,7 +101,8 @@ const HomeTabNavigator = createBottomTabNavigator({
 const HomeStackNavigator = createStackNavigator({
   HomeTabNavigator: HomeTabNavigator,
   Settings: {screen: Settings},
-  Contact: {screen: Contact}
+  Contact: {screen: Contact},
+  ContactChat: {screen: ContactChat }
 }, {
     navigationOptions: {
       // Hide 'Home' route from drawer nav

@@ -25,7 +25,7 @@ export class Contact extends Component {
                         <Text style={{ paddingLeft: 5, fontSize: 15 }}>Call</Text>
                     </Button>
                     <Button iconLeft rounded block light style={{ alignSelf: 'center', marginTop: 10, marginLeft: 10 }} 
-                                onPress={() => this.props.navigation.navigate('Chat', {
+                                onPress={() => this.props.navigation.navigate('ContactChat', {
                                     name: name,
                                     number: number
                                 })}>
