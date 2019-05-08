@@ -15,11 +15,11 @@ import { ContactChat } from './app/views/ContactChat';
 
 class App extends Component {
   
-  componentWillMount(){
+  componentWillMount = () => {
     NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectivityCheck);
   }
 
-  componentDidMount(){
+  componentDidMount = () => {
     Platform.OS === 'ios' ? console.log('iOS') : console.log('Android');
     
     NetInfo.getConnectionInfo().then((connectionInfo) => {
@@ -29,7 +29,7 @@ class App extends Component {
     });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount = () => {
     NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectivityCheck);
   }
   
