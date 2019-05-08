@@ -14,7 +14,7 @@ import { Contact } from './app/views/Contact';
 import { ContactChat } from './app/views/ContactChat';
 
 class App extends Component {
-  
+
   componentWillMount(){
     NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectivityCheck);
   }
@@ -82,7 +82,7 @@ const HomeTabNavigator = createBottomTabNavigator({
         <Icon name="th" size={20} color="#fff" />
       )
     }
-  }
+  },
 }, {
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index]

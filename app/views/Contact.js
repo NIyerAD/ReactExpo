@@ -3,10 +3,24 @@ import { Text } from 'react-native-elements';
 import { View } from 'react-native';
 import { Accordion, Container, Content, Button, Header } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Settings } from './Profile/Settings';
 
 export class Contact extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            callInit: false
+        }
+
+        this.initiateCall = this.initiateCall.bind(this);
+    }
+
+    initiateCall = () => {
+        console.log("call initiated");
+        this.setState({callInit: true});
+        data.push({title: this.props.navigation.getParam('name')});
+        console.log(data);
     }
 
     render() {
@@ -20,7 +34,7 @@ export class Contact extends Component {
                 <Text style={{ fontSize: 30 }}>{name}</Text>
                 <Text style={{ fontSize: 15 }}>{number}</Text>
                 <View style={{ flexDirection: 'row' }}>
-                    <Button iconLeft rounded block light style={{ width: '20%', alignSelf: 'center', marginTop: 10, marginLeft: 10 }}>
+                    <Button iconLeft rounded block light style={{ width: '20%', alignSelf: 'center', marginTop: 10, marginLeft: 10 }} onPress={() => this.initiateCall()}>
                         <Icon name="phone" style={{ color: 'green', fontSize: 20 }} />
                         <Text style={{ paddingLeft: 5, fontSize: 15 }}>Call</Text>
                     </Button>
@@ -33,14 +47,17 @@ export class Contact extends Component {
                         <Text style={{ paddingLeft: 5, fontSize: 15, paddingRight: 5 }}>Chat</Text>
                     </Button>
                 </View>
-                <Container style={{width: '100%'}}>
-                    <Content>
-                        <Accordion dataArray={data} expanded={0} />
-                    </Content>
-                </Container>
+                {this.state.callInit && 
+                    <Container style={{width: '100%'}}>
+                        <Content>
+                            <Accordion dataArray={data} expanded={0} />
+                        </Content>
+                    </Container>
+                }
+                
             </Container>
         )
     }
 }
 
-const data = [{title: "Line 1", content: "Line 1 content" }];
+const data = [];
