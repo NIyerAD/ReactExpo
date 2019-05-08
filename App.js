@@ -11,8 +11,12 @@ import { createDrawerNavigator, createSwitchNavigator, createAppContainer, creat
 import { Header, Left, Right, Body, Container, Button, Content, Footer, FooterTab, Title, List, ListItem } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Contact } from './app/views/Contact';
+import { Calls } from './app/views/Calls';
 
 class App extends Component {
+  constructor(props){
+    super(props)
+  }
   render() {
     return (
       <AppContainer />
@@ -23,6 +27,7 @@ class App extends Component {
 export default App;
 
 // Tab navigator
+
 const HomeTabNavigator = createBottomTabNavigator({
   Directory: {
     screen: Directory,

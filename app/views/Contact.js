@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native-elements';
 import { View } from 'react-native';
-import { Container, Button, Footer } from 'native-base';
+import { Accordion, Container, Content, Button, Header } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class Contact extends Component {
@@ -33,7 +33,14 @@ export class Contact extends Component {
                         <Text style={{ paddingLeft: 5, fontSize: 15, paddingRight: 5 }}>Chat</Text>
                     </Button>
                 </View>
+                <Container style={{width: '100%'}}>
+                    <Content>
+                        <Accordion dataArray={data} expanded={0} />
+                    </Content>
+                </Container>
             </Container>
         )
     }
 }
+
+const data = [{title: "Line 1", content: "Line 1 content" }];
