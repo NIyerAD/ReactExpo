@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert, NetInfo, Platform, StyleSheet, Text } from 'react-native';
 import { Login } from './app/views/Login';
-import { Home } from './app/views/Home';
+// import { Home } from './app/views/Home';
 import { Directory } from './app/views/Directory';
 import { History } from './app/views/History';
 import { Keypad } from './app/views/Keypad';
@@ -12,8 +12,17 @@ import { Header, Body, Container, Content, Title } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Contact } from './app/views/Contact';
 import { ContactChat } from './app/views/ContactChat';
+import { Overlay } from 'react-native-elements';
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      isNetworkDown: false,
+    };
+  }
   
   componentWillMount = () => {
     NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectivityCheck);
@@ -35,14 +44,30 @@ class App extends Component {
   
   handleConnectivityCheck = () => {
     NetInfo.getConnectionInfo().then((connectionInfo) => {
-      connectionInfo.type === 'none' ? Alert.alert('Connection Error') : ''
+      
+      if(connectionInfo.type === 'none'){
+        // Alert.alert('Error connecting to network')
+        this.setState({isNetworkDown: true});
+      }
+      else {
+        this.setState({isNetworkDown: false});
+      }
     });
   }
 
   render() {
-    return (
-      <AppContainer />
-    );
+    if(this.state.isNetworkDown === true){
+      return(
+        <Overlay width="auto" height="auto" isVisible={this.state.isNetworkDown}>
+            <Text style={{justifyContent: 'center', alignItems: 'center'}}>Cannot connect to network. Application will be disabled until network connection is established</Text>
+        </Overlay>
+      )
+    }
+    else {
+      return (
+        <AppContainer />
+      );
+    }
   }
 };
 
@@ -143,8 +168,8 @@ const AppDrawerNavigator = createDrawerNavigator(
           </Body>
         </Header>
         <Content>
-          <DrawerItems {...props} />
-          <Text>Logout</Text>
+          <DrawerItems style={{alignItems: 'center'}} {...props} />
+          <Text style={{textAlign: 'center'}}>Logout</Text>
         </Content>
       </Container>
   },
