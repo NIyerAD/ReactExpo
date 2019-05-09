@@ -1,33 +1,27 @@
 import React, { Component } from 'react';
 import { Alert, StyleSheet, View, Image, KeyboardAvoidingView, Text } from 'react-native';
 import { Input, Button, FormInput } from 'react-native-elements';
+import { Container, Content, Spinner } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RNPickerSelect from 'react-native-picker-select';
-
 
 export class Login extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            host: [],
+            selectedHost: null,
             isLoggedIn: false,
             username: null,
-            password: null, 
+            password: null,
+            loading: false
         };
 
-        this.updateHost = this.updateHost.bind(this);
         this.handleUsername = this.handleUsername.bind(this);
         this.handleHostChange = this.handleHostChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
-        
     }
     
-    updateHost = (host) => {
-        this.setState({ host: host })
-    }
-
     handleUsername = (username) => {
         this.setState({username});
     }
@@ -36,12 +30,22 @@ export class Login extends Component {
         this.setState({password});
     }
 
-    handleHostChange = () => {
-        console.log("host selected");
+    handleHostChange = (value) => {
+        this.setState({selectedHost: value});
     }
 
     handleSubmit = () => {
-        this.props.navigation.navigate('Home');
+        this.setState({loading: true});
+        // set that = this or bind the function in the timeout
+        let that = this;
+        setTimeout(function(){
+            that.props.navigation.navigate('Home');
+        }, 1000);
+        
+    }
+
+    componentWillUnmount = () => {
+        this.setState({loading: false});
     }
 
     render() {
@@ -52,11 +56,11 @@ export class Login extends Component {
         const hostnames = [
             {
                 label: 'https://demo.test.co.uk',
-                value: 'Demo'
+                value: 'https://demo.test.co.uk'
             },
             {
                 label: 'https://pabx.test.co.uk',
-                value: 'Live'
+                value: 'https://pabx.test.co.uk'
             }
         ]
 
@@ -69,7 +73,7 @@ export class Login extends Component {
                 </View>
                 <View style={{ flex: 2 }}>
                     <View style={styles.pickerContainer}>
-                        <RNPickerSelect items={hostnames} placeholder={placeholder} onValueChange={this.handleHostChange} />
+                        <RNPickerSelect items={hostnames} placeholder={placeholder} onValueChange={value => this.handleHostChange(value)} />
                     </View>
                     <Input
                         inputStyle={styles.inputFields}
@@ -101,7 +105,7 @@ export class Login extends Component {
                             />
                         }
                     />
-                    <Button title="Login" buttonStyle={styles.loginButton} onPress={() => this.handleSubmit()}/>
+                    <Button title="Login" loading={this.state.loading} buttonStyle={styles.loginButton} onPress={() => this.handleSubmit()}/>
                 </View>
             </KeyboardAvoidingView>
         )
@@ -115,10 +119,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: 80
     },
-    // companyLogo: {
-    //     width: 250,
-    //     height: 70
-    // },
     loginContainer: {
         backgroundColor: '#2D3547',
         height: '100%'
