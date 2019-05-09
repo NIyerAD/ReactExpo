@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView } from 'react-native';
 import { ListItem } from 'react-native-elements';
-import { Container, Header, Item, Input } from 'native-base';
+import { Container, Content, Spinner, Header, Item, Input } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class Directory extends Component {

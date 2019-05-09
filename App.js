@@ -46,7 +46,6 @@ class App extends Component {
     NetInfo.getConnectionInfo().then((connectionInfo) => {
       
       if(connectionInfo.type === 'none'){
-        // Alert.alert('Error connecting to network')
         this.setState({isNetworkDown: true});
       }
       else {
@@ -168,7 +167,7 @@ const AppDrawerNavigator = createDrawerNavigator(
           </Body>
         </Header>
         <Content>
-          <DrawerItems style={{alignItems: 'center'}} {...props} />
+          <DrawerItems {...props} />
           <Text style={{textAlign: 'center'}}>Logout</Text>
         </Content>
       </Container>
