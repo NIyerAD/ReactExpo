@@ -14,7 +14,8 @@ export class Login extends Component {
             isLoggedIn: false,
             username: null,
             password: null,
-            loading: false
+            loading: false,
+            incomingCall: false
         };
 
         this.handleUsername = this.handleUsername.bind(this);

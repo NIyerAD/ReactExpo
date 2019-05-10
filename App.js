@@ -8,27 +8,26 @@ import { Keypad } from './app/views/Keypad';
 import { Chat } from './app/views/Chat';
 import { Settings } from './app/views/Profile/Settings';
 import { createDrawerNavigator, createSwitchNavigator, createAppContainer, createBottomTabNavigator, createStackNavigator, DrawerItems } from 'react-navigation';
-import { Header, Body, Container, Content, Title } from 'native-base';
+import { Header, Body, Container, Content, Title, Button } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Contact } from './app/views/Contact';
 import { ContactChat } from './app/views/ContactChat';
-import { Overlay } from 'react-native-elements';
+import { ConnectionError } from './app/views/ErrorOverlay';
+import { CallOverlay } from './app/views/CallOverlay';
 
 class App extends Component {
 
-<<<<<<< HEAD
-  componentWillMount(){
-=======
   constructor(props){
     super(props);
 
     this.state = {
       isNetworkDown: false,
+      incomingCall: true,
+      isLoggingOut: false
     };
   }
   
   componentWillMount = () => {
->>>>>>> 626816326520baf1cab0b5269db240df69798238
     NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectivityCheck);
   }
 
@@ -58,12 +57,14 @@ class App extends Component {
     });
   }
 
+  logout = () => {
+    this.setState({isLoggingOut: true});
+  }
+
   render() {
     if(this.state.isNetworkDown === true){
       return(
-        <Overlay width="auto" height="auto" isVisible={this.state.isNetworkDown}>
-            <Text style={{justifyContent: 'center', alignItems: 'center'}}>Cannot connect to network. Application will be disabled until network connection is established</Text>
-        </Overlay>
+        <ConnectionError networkErr={this.state.isNetworkDown} />
       )
     }
     else {
