@@ -180,15 +180,6 @@ const AppDrawerNavigator = createDrawerNavigator(
 const AppSwitchNavigator = createSwitchNavigator({
   Login: { screen: Login },
   Home: { screen: AppDrawerNavigator },
-  // Settings: {screen}
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
