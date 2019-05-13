@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Contact } from './app/views/Contact';
 import { ContactChat } from './app/views/ContactChat';
 import { Overlay } from 'react-native-elements';
+import { LogoutModal } from './app/views/LogoutModal';
 
 class App extends Component {
 
@@ -156,6 +157,9 @@ const AppDrawerNavigator = createDrawerNavigator(
     },
     Settings: {
       screen: Settings
+    },
+    Logout: {
+      screen: LogoutModal
     }
   },
   {
@@ -168,7 +172,6 @@ const AppDrawerNavigator = createDrawerNavigator(
         </Header>
         <Content>
           <DrawerItems {...props} />
-          <Text style={{textAlign: 'center'}}>Logout</Text>
         </Content>
       </Container>
   },
