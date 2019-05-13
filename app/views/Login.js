@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Alert, StyleSheet, View, Image, KeyboardAvoidingView, Text } from 'react-native';
 import { Input, Button, FormInput } from 'react-native-elements';
 import { Container, Content, Spinner } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RNPickerSelect from 'react-native-picker-select';
 
@@ -36,10 +37,9 @@ export class Login extends Component {
 
     handleSubmit = () => {
         this.setState({loading: true});
-        // set that = this or bind the function in the timeout
-        let that = this;
         setTimeout(function(){
-            that.props.navigation.navigate('Home');
+            // Using 'Actions.[key]' allows us to navigate to our desired screen
+            Actions.directory();
         }, 1000);
         
     }

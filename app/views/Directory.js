@@ -3,6 +3,7 @@ import { ScrollView } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { Container, Content, Spinner, Header, Item, Input } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Actions } from 'react-native-router-flux';
 
 export class Directory extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ export class Directory extends Component {
                     {
                         directory.map((item, index) => (
                             <ListItem key={index} title={item.name} subtitle={item.subtitle}
-                                containerStyle={{ borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => this.props.navigation.navigate('Contact', {
+                                containerStyle={{ borderWidth: 0.5, borderStyle: 'solid' }} onPress={() => Actions.contact({
                                     // Passes props to child component
                                     name: item.name,
                                     number: item.number
