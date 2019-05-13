@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Alert, NetInfo, Platform, StyleSheet, Text } from 'react-native';
+import { NetInfo, Platform, Text } from 'react-native';
 import { Login } from './app/views/Login';
-// import { Home } from './app/views/Home';
 import { Directory } from './app/views/Directory';
 import { History } from './app/views/History';
 import { Keypad } from './app/views/Keypad';
@@ -106,7 +105,7 @@ const HomeTabNavigator = createBottomTabNavigator({
         <Icon name="th" size={20} color="#fff" />
       )
     }
-  }
+  },
 }, {
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index]
