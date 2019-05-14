@@ -22,14 +22,6 @@ export class Chat extends Component {
         return (
             <FlatList
                 data={chatList}
-                // renderItem={({ item }) =>
-                //     <TouchableHighlight>
-                //         <View style={{}}>
-                //             <Text style={{ fontSize: 15 }}>{item.name}</Text>
-                //             <Text>{item.subtitle}</Text>
-                //         </View>
-                //     </TouchableHighlight>
-                // }
                 renderItem={this.renderItem}
             />
         )

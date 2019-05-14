@@ -7,8 +7,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 export class History extends Component {
     constructor(props) {
         super(props);
-
-        this.getNumber = this.getNumber.bind(this);
     }
 
     getNumber(item) {

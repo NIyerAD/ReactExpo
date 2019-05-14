@@ -7,8 +7,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 export class Keypad extends Component {
     constructor(props){
         super(props);
-
-        this.registerNumber = this.registerNumber.bind(this);
     }
 
     registerNumber(){
@@ -17,12 +15,12 @@ export class Keypad extends Component {
 
     render() {
         return (
-            <Container style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} id="keypadbtns">
+            <Container style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <View style={{ alignItem: 'center', flexDirection: 'row', marginBottom: 10 }}>
-                    <Button id="1" style={style.keypad} onPress={() => {this.registerNumber()}}>
+                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
                         <Text style={{ textAlign: 'center' }}>1</Text>
                     </Button>
-                    <Button id="2" style={style.keypad} onPress={() => {this.registerNumber()}}>
+                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
                         <Text style={{ textAlign: 'center' }} id="2" >2</Text>
                     </Button>
                     <Button style={style.keypad}>
@@ -30,35 +28,35 @@ export class Keypad extends Component {
                     </Button>
                 </View>
                 <View style={{ alignItem: 'center', flexDirection: 'row', marginBottom: 10 }}>
-                    <Button style={style.keypad} onPress={(event) => {this.registerNumber()}}>
+                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
                         <Text style={{ textAlign: 'center' }} id="4">4</Text>
                     </Button>
-                    <Button style={style.keypad} onPress={(event) => {this.registerNumber()}}>
+                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
                         <Text style={{ textAlign: 'center' }} id="5">5</Text>
                     </Button>
-                    <Button style={style.keypad} onPress={(event) => {this.registerNumber()}}>
+                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
                         <Text style={{ textAlign: 'center' }} id="6">6</Text>
                     </Button>
                 </View>
                 <View style={{ alignItem: 'center', flexDirection: 'row', marginBottom: 10 }}>
-                    <Button style={style.keypad} onPress={(event) => {this.registerNumber()}}>
+                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
                         <Text style={{ textAlign: 'center' }} id="7">7</Text>
                     </Button>
-                    <Button style={style.keypad} onPress={(event) => {this.registerNumber()}}>
+                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
                         <Text style={{ textAlign: 'center' }} id="8">8</Text>
                     </Button>
-                    <Button style={style.keypad} onPress={(event) => {this.registerNumber()}}>
+                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
                         <Text style={{ textAlign: 'center' }} id="9">9</Text>
                     </Button>
                 </View>
                 <View style={{ alignItem: 'center', flexDirection: 'row', marginBottom: 10 }}>
-                    <Button style={style.keypad} onPress={(event) => {this.registerNumber()}}>
+                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
                         <Text style={{ textAlign: 'center' }} id="*">*</Text>
                     </Button>
-                    <Button style={style.keypad} onPress={(event) => {this.registerNumber()}}>
+                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
                         <Text style={{ textAlign: 'center' }} id="0">0</Text>
                     </Button>
-                    <Button style={style.keypad} onPress={(event) => {this.registerNumber()}}>
+                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
                         <Text style={{ textAlign: 'center' }} id="#">#</Text>
                     </Button>
                 </View>

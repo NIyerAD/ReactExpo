@@ -3,9 +3,6 @@ import { Text } from 'react-native-elements';
 import { Container } from 'native-base';
 
 export class Settings extends Component {
-    constructor(props){
-        super(props);
-    }
 
     render(){
         return(
