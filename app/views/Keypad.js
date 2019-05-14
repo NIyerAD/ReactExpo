@@ -3,96 +3,50 @@ import { Container, View, Text, Button } from 'native-base';
 // import { Button } from 'react-native-elements'
 import { StyleSheet, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { FlatList } from 'react-native-gesture-handler';
+
+
+const numCols = 3;
+const numbers = [{key: "1"}, {key: "2"}, {key: "3"}, {key: "4"}, {key: "5"}, {key: "6"}, {key: "7"}, {key: "8"}, {key: "9"}, {key: "*"}, {key: "0"}, {key: "#"}];
 
 export class Keypad extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            numberField: '07780687234'
+            numberField: ''
         }
         this.call = this.call.bind(this);
-        // this.renderKeypad = this.renderKeypad.bind(this);
     }
 
-    componentDidMount = () => {
-        // this.renderKeypad();
-    }
-
-    registerNumber = () => {
-        console.log();
+    registerNumber = (item) => {
+        this.setState({
+            numberField: this.state.numberField + item
+        })
     }
 
     call = () => { }
-
-    renderTop = () => {
-        const numbers = ["1", "2", "3", "4", "5", "6", "7", "8"];
-        const topnums = [];
-        for (index = 1; index < numbers.length + 1; index++) {
-            topnums.push(
-                // <Button style={style.keypad} key={index} id={index} onPress={this.registerNumber.bind(this, index)}>
-                //     <Text style={style.keyText}>{index}</Text>
-                // </Button>
-            )
-        }
-        return topnums;
-    }
+    
+    renderItem = ({item, index}) => {
+        return (
+            <View style={{ alignItem: 'center', flexDirection: 'row', marginTop: 20 }} pointerEvents="auto">
+                <Button style={style.keypad} onPress={() => this.registerNumber(item.key)}>
+                    <Text style={style.keyText}>{item.key}</Text>
+                </Button>
+            </View>
+        )
+    };
 
     render() {
-        let topnums = this.renderTop();
         return (
             <Container style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <TextInput style={{ marginBottom: 20, fontSize: 40 }}>{this.state.numberField}</TextInput>
-                <View style={{ alignItem: 'center', flexDirection: 'row', marginTop: 10 }} pointerEvents="auto">
-                    <Button title={buttonObj.one} style={style.keypad} onPress={(event) => this.registerNumber(event)}>
-                        <Text style={style.keyText}>1</Text>
-                    </Button>
-                    <Button style={style.keypad} onPress={(title) => this.registerNumber(title)}>
-                        <Text style={style.keyText}>2</Text>
-                    </Button>
-                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
-                        <Text style={style.keyText}>3</Text>
-                    </Button>
-                </View>
-                <View style={{ alignItem: 'center', flexDirection: 'row', marginTop: 10 }}>
-                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
-                        <Text style={style.keyText}>4</Text>
-                    </Button>
-                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
-                        <Text style={style.keyText}>5</Text>
-                    </Button>
-                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
-                        <Text style={style.keyText} id="6">6</Text>
-                    </Button>
-                </View>
-                <View style={{ alignItem: 'center', flexDirection: 'row', marginTop: 10 }}>
-                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
-                        <Text style={style.keyText} id="7">7</Text>
-                    </Button>
-                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
-                        <Text style={style.keyText} id="8">8</Text>
-                    </Button>
-                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
-                        <Text style={style.keyText} id="9">9</Text>
-                    </Button>
-                </View>
-                <View style={{ alignItem: 'center', flexDirection: 'row', marginTop: 10 }}>
-                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
-                        <Text style={style.keyText} id="*">*</Text>
-                    </Button>
-                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
-                        <Text style={style.keyText} id="0">0</Text>
-                    </Button>
-                    <Button style={style.keypad} onPress={() => this.registerNumber()}>
-                        <Text style={style.keyText} id="#">#</Text>
-                    </Button>
-                </View>
-                <View style={{ alignItem: 'center', flexDirection: 'row', marginTop: 10 }}>
-                    <View style={style.keypad}>
-                        <Icon name="phone" style={{ color: 'green', fontSize: 20 }} />
-                    </View>
+                <TextInput style={{ marginTop: 20, fontSize: 40 }}>{this.state.numberField}</TextInput>
+                <FlatList data={numbers} renderItem={this.renderItem} numColumns={numCols}/>
+                <View style={{height: 70, width: 70, justifyContent: 'center', alignItems: 'center', marginBottom: 5, borderRadius: 140, backgroundColor: '#E1E2EF'}}>
+                    <Icon name="phone" style={{ color: 'green', fontSize: 20 }} />
                 </View>
             </Container>
+            
         )
     }
 }
