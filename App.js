@@ -104,7 +104,6 @@ const HomeTabNavigator = createBottomTabNavigator({
   Keypad: {
     screen: Keypad,
     navigationOptions: {
-      headerTitle: null,
       tabBarIcon: ({ tintColor }) => (
         <Icon name="th" size={20} color={tintColor} />
       )
@@ -113,8 +112,15 @@ const HomeTabNavigator = createBottomTabNavigator({
 }, {
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index]
-      return {
-        headerTitle: routeName,
+      if(routeName === 'Keypad'){
+        return {
+          header: null
+        }
+      }
+      else {
+        return {
+          headerTitle: routeName,
+        }
       }
     },
     tabBarOptions: {
@@ -183,7 +189,7 @@ const AppDrawerNavigator = createDrawerNavigator(
   });
 
 const AppSwitchNavigator = createSwitchNavigator({
-  Login: { screen: Login },
+  // Login: { screen: Login },
   Home: { screen: AppDrawerNavigator },
 });
 
