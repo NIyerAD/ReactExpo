@@ -151,14 +151,14 @@ const HomeStackNavigator = createStackNavigator({
         headerStyle: {
           backgroundColor: '#2D3547'
         },
-        headerRight: (
-          <Icon name="user" style={{ fontSize: 25, paddingRight: 10, color: '#fff' }} onPress={() => navigation.openDrawer()} />
+        headerLeft: (
+          <Icon name="user" style={{ fontSize: 25, paddingLeft: 10, color: '#fff' }} onPress={() => navigation.openDrawer()} />
         )
       }
     }
   });
 
-const AppDrawerNavigator = createDrawerNavigator(
+const DrawerNavigator = createDrawerNavigator(
   {
     Home: {
       screen: HomeStackNavigator,
@@ -183,14 +183,11 @@ const AppDrawerNavigator = createDrawerNavigator(
         </Content>
       </Container>
   },
-  {
-    drawerPosition: "right",
-    drawerWidth: 180
-  });
+);
 
 const AppSwitchNavigator = createSwitchNavigator({
   Login: { screen: Login },
-  Home: { screen: AppDrawerNavigator },
+  Home: { screen: DrawerNavigator }
 });
 
 const AppContainer = createAppContainer(AppSwitchNavigator);
