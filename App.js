@@ -136,7 +136,8 @@ const HomeStackNavigator = createStackNavigator({
   HomeTabNavigator: HomeTabNavigator,
   Settings: { screen: Settings },
   Contact: { screen: Contact },
-  ContactChat: { screen: ContactChat }
+  ContactChat: { screen: ContactChat },
+  Calls: { screen: Calls }
 }, {
     navigationOptions: {
       // Hide 'Home' route from drawer nav
@@ -151,8 +152,8 @@ const HomeStackNavigator = createStackNavigator({
         headerStyle: {
           backgroundColor: '#2D3547'
         },
-        headerLeft: (
-          <Icon name="user" style={{ fontSize: 25, paddingLeft: 10, color: '#fff' }} onPress={() => navigation.openDrawer()} />
+        headerRight: (
+          <Icon name="user" style={{ fontSize: 25, paddingRight: 10, color: '#fff' }} onPress={() => navigation.openDrawer()} />
         )
       }
     }
