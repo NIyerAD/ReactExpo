@@ -189,7 +189,7 @@ const AppDrawerNavigator = createDrawerNavigator(
   });
 
 const AppSwitchNavigator = createSwitchNavigator({
-  // Login: { screen: Login },
+  Login: { screen: Login },
   Home: { screen: AppDrawerNavigator },
 });
 
