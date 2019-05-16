@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { Container, Header, Item, Input } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Test } from './Test';
 
 export class History extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            hasCalls: true
+        }
     }
 
     getNumber(item) {
@@ -18,8 +23,8 @@ export class History extends Component {
 
             <Container>
                 <Header searchBar rounded>
-                    <Item style={{marginBottom: 10}}>
-                        <Icon name="search" style={{paddingLeft: 5}}/>
+                    <Item style={{ marginBottom: 10 }}>
+                        <Icon name="search" style={{ paddingLeft: 5 }} />
                         <Input placeholder="Search" keyboardType={"phone-pad"} />
                     </Item>
                 </Header>
@@ -33,6 +38,12 @@ export class History extends Component {
                         ))
                     }
                 </ScrollView>
+                {this.state.hasCalls &&
+                    <View style={{ height: 40, justifyContent: 'center' }}>
+                        <Test />
+                    </View>
+                }
+
             </Container>
 
         )

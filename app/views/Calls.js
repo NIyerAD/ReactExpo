@@ -8,7 +8,7 @@ export class Calls extends Component {
 
     render(){
         return(
-            <Container style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <Container style={{display: 'flex'}}>
                 <Text>Call Screen</Text>
             </Container>
         )

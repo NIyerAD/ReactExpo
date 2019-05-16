@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
-import { Container, Content, Spinner, Header, Item, Input } from 'native-base';
+import { Container, Content, Spinner, Header, Item, Input, Button } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Test } from './Test';
 
 export class Directory extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            hasCalls: true,
+            isActive: false
+        }
 
         this.getName = this.getName.bind(this);
     }
@@ -14,6 +20,14 @@ export class Directory extends Component {
     getName(item) {
         console.log(item.name, "-", item.subtitle, "phone: ", item.number);
     }
+
+    // componentDidMount(){
+    //     setTimeout(function(){
+    //         this.setState({
+    //             hasCalls: true
+    //         })
+    //     }, 3000)
+    // }
 
     render() {
         return (
@@ -36,6 +50,11 @@ export class Directory extends Component {
                         ))
                     }
                 </ScrollView>
+                {this.state.hasCalls &&
+                    <View style={{ height: 60, justifyContent: 'center' }}>
+                        <Test  />
+                    </View>
+                }
             </Container>
         )
     }
