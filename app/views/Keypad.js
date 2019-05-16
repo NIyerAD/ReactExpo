@@ -74,7 +74,6 @@ export class Keypad extends Component {
                         <Button style={style.hidden}>
                             <Text></Text>
                         </Button>
-                        
                     }  
             </View>
         )

@@ -16,7 +16,7 @@ export class Test extends Component {
             //         </View>
             //     </SlidingUpPanel>
             // </View>
-            <View>
+            <View style={{height: '100%', width: '100%'}}>
                 <Text>Hello, World</Text>
             </View>
         )
