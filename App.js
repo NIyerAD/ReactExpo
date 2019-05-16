@@ -140,7 +140,7 @@ const HomeStackNavigator = createStackNavigator({
 }, {
     navigationOptions: {
       // Hide 'Home' route from drawer nav
-      drawerLabel: () => null
+        drawerLabel: () => null
     },
     defaultNavigationOptions: ({ navigation }) => {
 
