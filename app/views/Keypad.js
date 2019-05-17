@@ -33,7 +33,6 @@ export class Keypad extends Component {
 
     call = () => {
         console.log("Calling: ", this.state.numberField);
-        console.log(this.state.numberField[4]);
     }
     
     removeNum = () => {

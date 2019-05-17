@@ -4,7 +4,7 @@ import { Modal, TouchableHighlight, StyleSheet } from 'react-native';
 import { Calls } from './Calls';
 
 export class Test extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
@@ -25,13 +25,13 @@ export class Test extends Component {
             modalVisible: false
         })
     }
+
     render() {
         return (
-            <View style={{height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center', borderTopWidth: 1, borderColor: 'black'}} >
+            <View style={{ height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center', borderTopWidth: 1, borderColor: 'black' }} >
                 <Modal style={styles.modalContent} animationType="slide" transparent={false} visible={this.state.modalVisible} onRequestClose={() => null}>
-                    <Text style={{textAlign: 'center', marginTop: 100}}>Call Stack</Text>
-                        <Calls />
-                    <TouchableHighlight style={{justifyContent: 'center', alignItems: 'center' }} onPress={() => this.closeModal()}>
+                    <Calls />
+                    <TouchableHighlight style={{ justifyContent: 'center', alignItems: 'center', marginBottom: 100 }} onPress={() => this.closeModal()}>
                         <Text>Hide Modal</Text>
                     </TouchableHighlight>
                 </Modal>

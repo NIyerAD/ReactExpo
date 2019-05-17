@@ -10,7 +10,7 @@ export class History extends Component {
         super(props);
 
         this.state = {
-            hasCalls: true
+            hasCalls: false
         }
     }
 
@@ -20,7 +20,6 @@ export class History extends Component {
 
     render() {
         return (
-
             <Container>
                 <Header searchBar rounded>
                     <Item style={{ marginBottom: 10 }}>

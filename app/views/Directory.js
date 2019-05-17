@@ -10,7 +10,7 @@ export class Directory extends Component {
         super(props);
 
         this.state = {
-            hasCalls: true,
+            hasCalls: false,
             isActive: false
         }
 
@@ -20,14 +20,6 @@ export class Directory extends Component {
     getName(item) {
         console.log(item.name, "-", item.subtitle, "phone: ", item.number);
     }
-
-    // componentDidMount(){
-    //     setTimeout(function(){
-    //         this.setState({
-    //             hasCalls: true
-    //         })
-    //     }, 3000)
-    // }
 
     render() {
         return (
@@ -52,7 +44,7 @@ export class Directory extends Component {
                 </ScrollView>
                 {this.state.hasCalls &&
                     <View style={{ height: 60, justifyContent: 'center' }}>
-                        <Test  />
+                        <Test visible={this.state.isActive} />
                     </View>
                 }
             </Container>
