@@ -21,6 +21,13 @@ export class Directory extends Component {
         console.log(item.name, "-", item.subtitle, "phone: ", item.number);
     }
 
+    componentDidMount = () => {
+        setTimeout(() => {
+            console.log("calling");
+            this.setState({ hasCalls: true })
+        }, 5000);
+    }
+
     render() {
         return (
             <Container>
